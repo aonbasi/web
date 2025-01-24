@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Example page with Google AdSense integration for ads to load immediately.">
-    <meta name="keywords" content="Google AdSense, ads, example, HTML">
+    <meta name="description" content="Example page with Google AdSense integration and localStorage usage.">
+    <meta name="keywords" content="Google AdSense, ads, localStorage, example, HTML">
     <meta name="author" content="Your Name">
     <title>AdSense Example Page</title>
     <style>
@@ -63,11 +63,28 @@
     </style>
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6724251908805255"
         crossorigin="anonymous"></script>
+    <script>
+        // localStorage kullanarak veri kaydetme ve okuma
+        document.addEventListener("DOMContentLoaded", () => {
+            // Örnek veri kaydetme
+            const exampleData = { name: "CodeMCU", description: "Exploring microcontrollers and embedded systems." };
+            localStorage.setItem("exampleKey", JSON.stringify(exampleData));
+
+            // Örnek veri okuma
+            const savedData = JSON.parse(localStorage.getItem("exampleKey"));
+            console.log("Saved Data:", savedData);
+
+            // Sayfada göster
+            const dataDisplay = document.createElement("p");
+            dataDisplay.textContent = `Welcome to ${savedData.name}: ${savedData.description}`;
+            document.body.insertBefore(dataDisplay, document.querySelector(".container"));
+        });
+    </script>
 </head>
 <body>
     <div class="container">
         <h1>AdSense Example Page</h1>
-        <p>This is an example page demonstrating how to integrate Google AdSense ads. The ad slots are large enough to ensure proper loading and display.</p>
+        <p>This is an example page demonstrating how to integrate Google AdSense ads and use localStorage for data storage.</p>
 
         <!-- First Ad Slot -->
         <div class="ad-container">
